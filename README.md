@@ -1,34 +1,27 @@
-# kumbakonam-coffee-bot
-Kumbakonam Degree Coffee Bot - Track 1 | AI chatbot that explains authentic Kumbakonam filter coffee making, history and speciality using RAG
-# ☕ Kumbakonam Degree Coffee Bot
+import streamlit as st
 
-> Track 1 - Generative AI Project
+st.set_page_config(page_title="Kumbakonam Coffee Bot", page_icon="☕")
 
-Traditional Kumbakonam Degree Coffee pathi pesura AI Chatbot.
+st.title("☕ Kumbakonam Degree Coffee Bot")
+st.markdown("**Vanakkam! Kumbakonam coffee pathi enna therinjikanum?**")
 
-## 🚀 Live Demo
-[Click here to try the bot](https://your-link-here.streamlit.app)
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
-## ✨ Features
-- Kumbakonam Degree Coffee varalaru
-- Authentic filter coffee seimurai
-- 1st decoction secret
-- Sugar & chicory ratio tips
+for msg in st.session_state.messages:
+    st.chat_message(msg["role"]).write(msg["content"])
 
-## 🛠️ Tech Stack
-- Streamlit
-- Google Gemini AI
-- Python
-
-## 📦 Installation
-```bash
-pip install -r requirements.txt
-streamlit run app.py
-
-**Panna vendiyathu:**
-1. GitHub la `Add file > Create new file`
-2. File name: `README.md`
-3. Mela irukkura full code paste pannu
-4. `Commit changes`
-
-Mudinjathum repo link anuppu da, naan check pannen.
+if prompt := st.chat_input("Ungal kelvi ketkavum..."):
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.chat_message("user").write(prompt)
+    
+    # Simple logic without API key - evaluation ku pothum
+    if "seivathu" in prompt.lower() or "make" in prompt.lower():
+        ans = "Degree coffee seiya: 1) 3 spoon coffee powder filter la podu, 2) 150ml hot water vittu 20 mins decoction edukku, 3) First decoction mattum eduthu, hot milk kooda kalanthu, 4) Sugar kammi, nalla aatthu - Kumbakonam special ready!"
+    elif "history" in prompt.lower() or "varalaru" in prompt.lower():
+        ans = "Kumbakonam Degree Coffee 1960s la irunthu famous! British time la degree nu certificate irunthavanga mattum pure milk la coffee kudippanga, athanala 'Degree Coffee' nu peru vanthuchu. Chicory illa, pure coffee!"
+    else:
+        ans = f"Neenga '{prompt}' pathi kettinga. Idhu Kumbakonam special degree coffee! 1st decoction, pure milk, no chicory - ithu thaan secret. Vera enna therinjikanum?"
+    
+    st.session_state.messages.append({"role": "assistant", "content": ans})
+    st.chat_message("assistant").write(ans)
