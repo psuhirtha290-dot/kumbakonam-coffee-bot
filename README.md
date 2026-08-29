@@ -1,14 +1,10 @@
 # ☕ Kumbakonam Degree Coffee Bot
+> Track 1 - Local Culture AI
 
-> Track 1 - Generative AI Project | Local Culture AI
-
-Kumbakonam Degree Coffee oda varalaru, seimurai, secret ellam Tanglish la sollum AI Chatbot.
-
-## 🚀 Live Demo
-👉 **[Click here to try the bot](https://kumbakonam-coffee-bot.streamlit.app)**
-
-> Note: Deploy pannathum un real link-a inga maathidu
-
+**Live Demo:** https://kumbakonam-coffee-bot.streamlit.app
+**Run:** `pip install -r requirements.txt` then `streamlit run app.py`
+**Features:** Kumbakonam coffee varalaru, seimurai, decoction secret
+**Tech:** Streamlit, Python
 ## ✨ Features
 - 📜 Kumbakonam Degree Coffee varalaru & culture
 - ☕ Authentic filter coffee seimurai step-by-step
